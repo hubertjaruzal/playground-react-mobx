@@ -8,7 +8,14 @@ class App extends Component {
 
     this.state = {
       name: 'React-mobX',
-      list: this.props.counter.list
+      list: this.props.todoStore.list
+    }
+  }
+
+  createNewTodo = (e) => {
+    if(e.which === 13) {
+      this.props.todoStore.addTodo(e.target.value, this.state.list);
+      e.target.value = '';
     }
   }
 
@@ -16,12 +23,13 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>{this.state.name}</h1>
+        <input onKeyPress={this.createNewTodo.bind(this)} />
         <div>
           <ul>
             {
               this.state.list.map(todo => (
                 <li key={todo.id}>
-                 <span>{todo.name}</span>
+                  <span>{todo.name}</span>
                 </li>
               ))
             }

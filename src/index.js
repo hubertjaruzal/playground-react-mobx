@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
-import Counter from './store/todoStore';
+import TodoStore from './store/todoStore';
 
 ReactDOM.render(
-  <App counter={new Counter()} />,
+  <App todoStore={new TodoStore()} />,
   document.getElementById('root')
 );
