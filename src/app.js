@@ -24,28 +24,33 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <h1>{this.state.name}</h1>
-        <div>
-          <span>Filter: </span>
-          <input value={this.props.todoStore.filter} onChange={this.filter.bind(this)} />
+      <section className='app'>
+        <div className='modal__container'>
+          <div className='modal__header'>
+            <h1>{this.state.name}</h1>
+          </div>
+          <div className='input__container'>
+            <span>Filter</span>
+            <input value={this.props.todoStore.filter} onChange={this.filter.bind(this)} />
+          </div>
+          <div className='input__container'>
+            <span>Add</span>
+            <input onKeyPress={this.createNewTodo.bind(this)} />
+          </div>
+          <div className='list__container'>
+            <ul>
+              {
+                this.props.todoStore.filterTodoList.map(todo => (
+                  <li key={todo.id}>
+                    <span>{todo.id}. </span>
+                    <span>{todo.name}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
-        <div>
-          <span>Add: </span>
-          <input onKeyPress={this.createNewTodo.bind(this)} />
-        </div>
-        <div>
-          <ul>
-            {
-              this.props.todoStore.filterTodoList.map(todo => (
-                <li key={todo.id}>
-                  <span>{todo.name}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+      </section>
     );
   }
 }
