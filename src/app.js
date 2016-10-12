@@ -18,6 +18,10 @@ class App extends Component {
     }
   }
 
+  removeTodos = (e) => {
+    this.props.todoStore.removeDoneTodo(this.props.todoStore.list);
+  }
+
   filter = (e) => {
     this.props.todoStore.filter = e.target.value;
   }
@@ -37,6 +41,9 @@ class App extends Component {
             <span>Add</span>
             <input onKeyPress={this.createNewTodo.bind(this)} />
           </div>
+          <button onClick={this.removeTodos.bind(this)} >
+            Remove done Todos
+          </button>
           <div className='list__container'>
             <ul>
               {
