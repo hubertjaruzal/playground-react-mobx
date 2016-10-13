@@ -12,12 +12,13 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  background: #121729;
 }
 
 .app {
   width: 60%;
   height: 60%;
-  max-width: 500px;
+  max-width: 400px;
   min-height: 500px;
   margin-right: -50%;
   top: 50%;
@@ -49,7 +50,8 @@ body {
 }
 
 .input__container {
-  margin: 20px 30px 0px 30px;
+  display: inline-block;
+  margin: 20px 5px 0px 30px;
   span {
     color: white;
     font-family: RobotoLight;
@@ -59,7 +61,6 @@ body {
     border: none;
     outline: none;
     padding: 5px;
-    margin-left: 5px;
   }
 }
 
@@ -74,4 +75,16 @@ body {
       font-family: RobotoLight;
     }
   }
+}
+
+.removeTodo__btn {
+  height: 25px;
+  border: 1px solid #2b3354;
+  background: #373f61;
+  border-radius: 10px;
+  color: white;
+}
+
+.todo__checked {
+  text-decoration: line-through;
 }

@@ -34,23 +34,33 @@ class App extends Component {
             <h1>{this.state.name}</h1>
           </div>
           <div className='input__container'>
-            <span>Filter</span>
-            <input value={this.props.todoStore.filter} onChange={this.filter.bind(this)} />
+            <input
+              placeholder='Filter'
+              value={this.props.todoStore.filter}
+              onChange={this.filter.bind(this)}
+            />
           </div>
           <div className='input__container'>
-            <span>Add</span>
-            <input onKeyPress={this.createNewTodo.bind(this)} />
+            <input
+              placeholder='Add'
+              onKeyPress={this.createNewTodo.bind(this)}
+            />
           </div>
-          <button onClick={this.removeTodos.bind(this)} >
-            Remove done Todos
-          </button>
+          <div className='input__container'>
+            <button
+              className='removeTodo__btn'
+              onClick={this.removeTodos.bind(this)}
+            >
+              Remove done Todos
+            </button>
+          </div>
           <div className='list__container'>
             <ul>
               {
                 this.props.todoStore.filterTodoList.map(todo => (
                   <li key={todo.id}>
                     <span>{todo.id}. </span>
-                    <span>{todo.name}</span>
+                    <span className={todo.done ? 'todo__checked' : ''} >{todo.name}</span>
                   </li>
                 ))
               }
