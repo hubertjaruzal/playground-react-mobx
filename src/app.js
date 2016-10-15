@@ -22,6 +22,10 @@ class App extends Component {
     this.props.todoStore.removeDoneTodo(this.props.todoStore.list);
   }
 
+  toggleTodo = (todo) => {
+    todo.done = !todo.done
+  }
+
   filter = (e) => {
     this.props.todoStore.filter = e.target.value;
   }
@@ -55,16 +59,25 @@ class App extends Component {
             </button>
           </div>
           <div className='list__container'>
-            <ul>
-              {
-                this.props.todoStore.filterTodoList.map(todo => (
-                  <li key={todo.id}>
-                    <span>{todo.id}. </span>
-                    <span className={todo.done ? 'todo__checked' : ''} >{todo.name}</span>
-                  </li>
-                ))
-              }
-            </ul>
+            {
+              this.props.todoStore.filterTodoList.length === 0 ?
+                <p>You do not have any items in your Todo list...</p>
+                :
+                <ul>
+                  {
+                    this.props.todoStore.filterTodoList.map(todo => (
+                      <li key={todo.id} onClick={this.toggleTodo.bind(this, todo)} >
+                        <span>
+                          {todo.id}.
+                        </span>
+                        <span className={todo.done ? 'todo__checked' : ''} >
+                          {todo.name}
+                        </span>
+                      </li>
+                    ))
+                  }
+                </ul>
+            }
           </div>
         </div>
       </section>
