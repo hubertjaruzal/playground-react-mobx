@@ -49,9 +49,13 @@ body {
   }
 }
 
-.input__container {
+.modal__box {
+  padding: 0 30px 0 20px;
+}
+
+.settings__box {
   display: inline-block;
-  margin: 20px 5px 0px 30px;
+  margin: 20px 5px 0 10px;
   span {
     color: white;
     font-family: RobotoLight;
@@ -65,7 +69,7 @@ body {
 }
 
 .list__container {
-  margin: 20px 30px 0px 30px;
+  margin: 20px 10px 0 10px;
   p {
     color: white;
     font-family: RobotoLight;
@@ -86,7 +90,7 @@ body {
   }
 }
 
-.removeTodo__btn {
+.settings__btn {
   height: 25px;
   border: 1px solid #2b3354;
   background: #373f61;

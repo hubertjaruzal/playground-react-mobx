@@ -7,6 +7,3 @@ npm i --save
 ```bash
 npm start
 ```
-
-# Example
-![](http://i.imgur.com/PLO88hh.gif)

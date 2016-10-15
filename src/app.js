@@ -24,7 +24,11 @@ class App extends Component {
 
   toggleTodo = (todo) => {
     todo.done = !todo.done
-    localStorage.setItem('List', JSON.stringify(this.props.todoStore.list))
+    localStorage.setItem('List', JSON.stringify(this.props.todoStore.list));
+  }
+
+  clearList = (list) => {
+    this.props.todoStore.clearTodos(list);
   }
 
   filter = (e) => {
@@ -38,45 +42,55 @@ class App extends Component {
           <div className='modal__header'>
             <h1>{this.state.name}</h1>
           </div>
-          <div className='input__container'>
-            <input
-              placeholder='Filter'
-              value={this.props.todoStore.filter}
-              onChange={this.filter.bind(this)}
-            />
-          </div>
-          <div className='input__container'>
-            <input
-              placeholder='Add'
-              onKeyPress={this.createNewTodo.bind(this)}
-            />
-          </div>
-          <div className='input__container'>
-            <button
-              className='removeTodo__btn'
-              onClick={this.removeTodos.bind(this)}
-            >
-              Remove done Todos
-            </button>
-          </div>
-          <div className='list__container'>
-            {
-              this.props.todoStore.filterTodoList.length === 0 ?
-                <p>You do not have any items in your Todo list...</p>
-                :
-                <ul>
-                  {
-                    this.props.todoStore.filterTodoList.map((todo,index) => (
-                      <li key={index} onClick={this.toggleTodo.bind(this, todo)} >
-                        <span>{index+1}. </span>
-                        <span className={todo.done ? 'todo__checked' : ''} >
-                          {todo.name}
-                        </span>
-                      </li>
-                    ))
-                  }
-                </ul>
-            }
+          <div className='modal__box'>
+            <div className='settings__box'>
+              <input
+                placeholder='Filter'
+                value={this.props.todoStore.filter}
+                onChange={this.filter.bind(this)}
+              />
+            </div>
+            <div className='settings__box'>
+              <input
+                placeholder='Add'
+                onKeyPress={this.createNewTodo.bind(this)}
+              />
+            </div>
+            <div className='settings__box'>
+              <button
+                className='settings__btn'
+                onClick={this.removeTodos.bind(this)}
+              >
+                Remove done todos
+              </button>
+            </div>
+            <div className='settings__box'>
+              <button
+                className='settings__btn'
+                onClick={this.clearList.bind(this, this.props.todoStore.list)}
+              >
+                Clear List
+              </button>
+            </div>
+            <div className='list__container'>
+              {
+                this.props.todoStore.filterTodoList.length === 0 ?
+                  <p>You do not have any items in your Todo list...</p>
+                  :
+                  <ul>
+                    {
+                      this.props.todoStore.filterTodoList.map((todo,index) => (
+                        <li key={index} onClick={this.toggleTodo.bind(this, todo)} >
+                          <span>{index+1}. </span>
+                          <span className={todo.done ? 'todo__checked' : ''} >
+                            {todo.name}
+                          </span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+              }
+            </div>
           </div>
         </div>
       </section>
