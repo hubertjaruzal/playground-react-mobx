@@ -74,6 +74,10 @@ body {
     margin: 0;
     padding: 0;
     li {
+      line-height: 1.5;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #373f61;
+      display: block;
       cursor: pointer;
       list-style: none;
       color: white;

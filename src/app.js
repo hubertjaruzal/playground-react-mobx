@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      name: 'React-mobX'
+      name: 'Todo List'
     }
   }
 
@@ -67,9 +67,7 @@ class App extends Component {
                   {
                     this.props.todoStore.filterTodoList.map(todo => (
                       <li key={todo.id} onClick={this.toggleTodo.bind(this, todo)} >
-                        <span>
-                          {todo.id}.
-                        </span>
+                        <span>{todo.id}. </span>
                         <span className={todo.done ? 'todo__checked' : ''} >
                           {todo.name}
                         </span>
