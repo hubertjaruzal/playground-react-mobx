@@ -60,6 +60,7 @@ class App extends Component {
               <button
                 className='settings__btn'
                 onClick={this.removeTodos.bind(this)}
+                disabled={this.props.todoStore.list.length === 0 ? true : false}
               >
                 Remove done todos
               </button>
@@ -68,6 +69,7 @@ class App extends Component {
               <button
                 className='settings__btn'
                 onClick={this.clearList.bind(this, this.props.todoStore.list)}
+                disabled={this.props.todoStore.list.length === 0 ? true : false}
               >
                 Clear List
               </button>

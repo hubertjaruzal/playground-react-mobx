@@ -99,6 +99,13 @@ body {
   border-radius: 10px;
   color: white;
   outline: none;
+  cursor: pointer;
+  &:disabled {
+    background: #636a8c;
+    color: #a6acca;
+    border: 1px solid #373f61;
+    cursor: auto;
+  }
 }
 
 .todo__checked {
