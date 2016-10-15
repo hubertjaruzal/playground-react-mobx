@@ -24,6 +24,7 @@ class App extends Component {
 
   toggleTodo = (todo) => {
     todo.done = !todo.done
+    localStorage.setItem('List', JSON.stringify(this.props.todoStore.list))
   }
 
   filter = (e) => {
@@ -65,9 +66,9 @@ class App extends Component {
                 :
                 <ul>
                   {
-                    this.props.todoStore.filterTodoList.map(todo => (
-                      <li key={todo.id} onClick={this.toggleTodo.bind(this, todo)} >
-                        <span>{todo.id}. </span>
+                    this.props.todoStore.filterTodoList.map((todo,index) => (
+                      <li key={index} onClick={this.toggleTodo.bind(this, todo)} >
+                        <span>{index+1}. </span>
                         <span className={todo.done ? 'todo__checked' : ''} >
                           {todo.name}
                         </span>
